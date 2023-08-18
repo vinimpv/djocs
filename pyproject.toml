@@ -20,6 +20,7 @@ django-browser-reload = "^1.11.0"
 djlint = "^1.32.1"
 ruff = "^0.0.285"
 black = "^23.7.0"
+pytest-django = "^4.5.2"
 
 [tool.mypy]
 plugins = ["mypy_django_plugin.main"]
@@ -36,3 +37,7 @@ line-length = 120
 
 [tool.ruff]
 line-length = 120
+
+[too.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "app.settings"
+python_files = ["tests.py", "test_*.py",  "*_tests.py"]
