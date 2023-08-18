@@ -13,6 +13,8 @@ repos:
         additional_dependencies:
           - django-stubs[compatible-mypy]==4.2.3
           - django-allauth==0.54.0
+          - whitenoise==6.5.0
+          - django-compressor==4.4
         files: ^app
   - repo: https://github.com/psf/black
     rev: 23.7.0
