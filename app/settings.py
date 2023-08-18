@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS: list[str] = []
 
+a: int = "dsa"
+
 
 # Application definition
 
