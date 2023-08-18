@@ -1,0 +1,59 @@
+fail_fast: false
+default_language_version:
+  python: python3
+default_stages:
+  - commit
+  - push
+minimum_pre_commit_version: 3.0.0
+repos:
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.4.1
+    hooks:
+      - id: mypy
+        additional_dependencies: [numpy>=1.25.0]
+        files: ^src
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+        additional_dependencies: [toml]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.1
+    hooks:
+      - id: prettier
+        language_version: system
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        additional_dependencies: [toml]
+        args: [--order-by-type]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-ast
+      - id: check-added-large-files
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: trailing-whitespace
+      - id: check-docstring-first
+      - id: check-yaml
+      - id: check-toml
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.10.1
+    hooks:
+      - id: pyupgrade
+        args: [--py3-plus, --py38-plus, --keep-runtime-typing]
+  - repo: https://github.com/asottile/blacken-docs
+    rev: 1.15.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies: [black==23.1.0]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.0.282
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
