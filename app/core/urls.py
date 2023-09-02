@@ -1,9 +1,10 @@
-from .views import index
 from django.urls import path
-from django.urls import include
-
+from . import views
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("accounts/", include("allauth.urls")),
+    path('', views.index, name='index'),
+    path('chat/list/', views.list_chats, name='list-chats'),
+    path("chat/create/", views.create_chat, name="create-chat"),
+    path('chat/<str:chat_id>/', views.get_chat, name='get-chat'),
+    path('chat/<str:chat_id>/send_message/', views.send_message, name='send-message'),
 ]

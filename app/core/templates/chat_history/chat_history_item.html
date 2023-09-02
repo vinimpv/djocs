@@ -1,0 +1,32 @@
+<tr class="flex items-center justify-between bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+    <div>
+        <th scope="row"
+            class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+            <img class="w-10 h-10 rounded-full" src={{ chat.author.profile.image.url }} alt="{{ chat.author.first_name }} {{ chat.author.last_name }} profile image">
+            <div class="pl-3">
+                <div class="text-base font-semibold">{{ chat.author.first_name }} {{ chat.author.last_name }}</div>
+            </div>
+        </th>
+        <td class="px-6 py-4 flex-1">
+            <p>{{ chat.title }}</p>
+        </td>
+        <td class="px-6 py-4">
+            <button type="button"
+                    hx-get="{% url 'get-chat' chat.id %}"
+                    hx-trigger="click"
+                    hx-target="#main"
+                    hx-swap="innerHTML"
+                    hx-push-url="true"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <span>Chat</span>
+                <svg class="w-3.5 h-3.5 ml-2"
+                     aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                </svg>
+            </button>
+        </td>
+    </div>
+</tr>

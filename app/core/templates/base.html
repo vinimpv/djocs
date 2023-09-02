@@ -1,0 +1,42 @@
+<!-- templates/_base.html -->
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Django ">
+    <meta name="keywords" content="Django, Tailwind CSS, Flowbite">
+    <title>Django + Tailwind CSS + Flowbite</title>
+    {% comment %} {% compress css %} {% endcomment %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% comment %} {% endcompress %} {% endcomment %}
+    {% compress js %}
+    <script src="{% static 'htmx.min.js' %}" defer></script>
+    {% endcompress %}
+    <script defer src="{% static 'alpine.js' %}"></script>
+  </head>
+  <body id="body" class="container mx-auto flex flex-1 flex-col h-screen max-w-screen-xl"  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <main id="main" class="flex flex-1 flex-col">
+      {% block content %}
+      {% endblock content %}
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+  </body>
+</html>
+<style>
+[x-cloak] { display: none !important; }
+</style>
+<script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('data', () => ({
+        loading: false,
+
+        toggle() {
+            this.loading = ! this.loading
+        }
+    }))
+})
+</script>
