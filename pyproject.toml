@@ -24,6 +24,13 @@ ipykernel = "^6.25.1"
 pgvector = "^0.2.1"
 psycopg2-binary = "^2.9.7"
 dj-database-url = "^2.1.0"
+kubernetes = "^27.2.0"
+django-extensions = "^3.2.3"
+django-summernote = "^0.8.20.0"
+django-storages = "^1.13.2"
+boto3 = "^1.28.40"
+markdown = "^3.4.4"
+django-browser-reload = "^1.11.0"
 
 
 [tool.poetry.group.dev.dependencies]

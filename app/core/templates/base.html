@@ -17,6 +17,8 @@
     <script src="{% static 'htmx.min.js' %}" defer></script>
     {% endcompress %}
     <script defer src="{% static 'alpine.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   </head>
   <body id="body" class="container mx-auto flex flex-1 flex-col h-screen max-w-screen-xl"  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <main id="main" class="flex flex-1 flex-col">

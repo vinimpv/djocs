@@ -1,6 +1,10 @@
-<div class="flex-col flex flex-1 w-full h-full p-5" >
-    {% include "chat/chat_header.html" %}
-    {% include "chat/chat_messages_list.html" %}
+<div class="flex-col flex flex-1 w-full h-full" >
+    {% include "common/header.html" with title=chat.title show_back_button="true" %}
+    <div class="h-full text-sm text-left text-gray-500 dark:text-gray-400 w-full overflow-auto">
+        <div id="chat-messages-list">
+            {% include "chat/chat_messages_list.html" %}
+        </div>
+    </div>
     <div class="shadow-lg rounded-lg">
         {% include "chat/chat_form.html" %}
     </div>

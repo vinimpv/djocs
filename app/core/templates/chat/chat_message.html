@@ -1,5 +1,5 @@
-<tr class="items-center space-x-5 w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-    <th class="flex flex-col p-5 items-center justify-center h-full">
+<div class="flex flex-row items-center space-x-5 w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+    <div class="flex flex-col p-5 items-center justify-center h-full w-1/6">
         {% if message.type == 'LLM_RESPONSE' %}
             <svg class="w-6 h-6 text-gray-800 dark:text-white"
                  aria-hidden="true"
@@ -11,7 +11,7 @@
             <div class="format">
                 <h3>LLM</h3>
             </div>
-        {% elif message.type == 'USER_MESSAGE' %}
+        {% elif message.type == 'USER_MESSAGE' or message.type == 'MODERATOR_MESSAGE' %}
             <svg class="w-6 h-6 text-gray-800 dark:text-white"
                  aria-hidden="true"
                  xmlns="http://www.w3.org/2000/svg"
@@ -27,8 +27,8 @@
                 <i class="fas fa-comment"></i>
             </td>
         {% endif %}
-    </th>
-    <td class="w-full p-5">
-        <p class="break-all max-w-full">{{ message.content }}</p>
-    </td>
-</tr>
+    </div>
+    <div class="w-full p-5">
+        <div id="content-{{ message.id }}" class="format mr-0">{{ message.rendered|safe }}</div>
+    </div>
+</div>

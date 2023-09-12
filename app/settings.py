@@ -1,6 +1,7 @@
 from pathlib import Path
 import dj_database_url
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "umhg)27ulh6&+7x&+*!!$io136u%k3pt(%b938%68p+4$(vj75"
 DEBUG = True
@@ -18,17 +19,25 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "compressor",
+    "django_htmx",
+    "django_extensions",
+    "simple_history",
+    "django_summernote",
+    "storages",
+    "django_browser_reload"
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "simple_history.middleware.HistoryRequestMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
 ]
 
@@ -88,15 +97,26 @@ STATICFILES_FINDERS = (
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
+    "default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"},
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost:5432/postgres',
+    "default": dj_database_url.config(
+        default="postgresql://postgres:postgres@localhost:5432/postgres",
         conn_max_age=600,
         conn_health_checks=True,
     )
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
+
+DJOCS_EMBEDDING_MODEL = "text-embedding-ada-002"
+DJOCS_GPT_MODEL = "gpt-3.5-turbo"
+
+DJOCS_MAX_PROMPT_TOKENS = 4000
+DJOCS_MAX_KNOWLEDGE_TOKENS = 3000
+DJOCS_HISTORY_KNOWLEDGE_RATIO = 0.5
