@@ -16,7 +16,7 @@ RUN poetry config virtualenvs.in-project true
 RUN poetry install
 RUN poetry build
 
-FROM base as final
+FROM base
 
 COPY --from=builder /app/.venv /opt/.venv
 
