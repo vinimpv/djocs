@@ -52,7 +52,7 @@ async def send_message(request: HttpRequest, chat_id: str) -> HttpResponse:
         message = await messages_service.create_message(chat=chat, author=request.user, content=content)
         message_embedding = await embeddings_service.get_content_embedding(content)
 
-        knowledges = await knowledges_service.get_relevant_knowledges_for_message_embedding(message_embedding, list())
+        knowledges = await knowledges_service.get_relevant_knowledges_for_message_embedding(message_embedding)
 
         context = await get_context_from_knowledges(knowledges)
         # context + history cant be more than 1000 characters?

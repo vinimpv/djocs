@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     "simple_history",
     "django_summernote",
     "storages",
-    "django_browser_reload"
+    "django_browser_reload",
 ]
 
 MIDDLEWARE = [
@@ -105,7 +105,7 @@ STORAGES = {
 
 DATABASES = {
     "default": dj_database_url.config(
-        default="postgresql://postgres:postgres@localhost:5432/postgres",
+        default="postgresql://postgres:postgres@postgres:5432/postgres",
         conn_max_age=600,
         conn_health_checks=True,
     )

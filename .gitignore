@@ -165,3 +165,4 @@ staticfiles/
 static/
 
 *.ipynb
+postgres-data/

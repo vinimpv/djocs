@@ -9,16 +9,13 @@ async def get_knowledge_embedding(knowledge: Knowledge) -> list[float]:
 
 
 async def get_relevant_knowledges_for_message_embedding(
-    message_embedding: list[float], category_ids=list[str]
+    message_embedding: list[float]
 ) -> list[Knowledge]:
     knowledges_qs = (
         Knowledge.objects.annotate(distance=L2Distance("embedding", message_embedding))
         .filter(distance__lt=1)
         .order_by("distance")
     )
-    if category_ids:
-        knowledges_qs = knowledges_qs.filter(category__id__in=category_ids)
-
     knowledges = []
     async for knowledge in knowledges_qs[:2]:
         knowledges.append(knowledge)

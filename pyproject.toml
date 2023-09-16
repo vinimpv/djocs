@@ -31,6 +31,7 @@ django-storages = "^1.13.2"
 boto3 = "^1.28.40"
 markdown = "^3.4.4"
 django-browser-reload = "^1.11.0"
+django-rq = "^2.8.1"
 
 
 [tool.poetry.group.dev.dependencies]

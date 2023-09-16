@@ -10,7 +10,7 @@ async def build_messages_input(chat: Chat, message: str, context: str) -> ChatCo
             content=(
                 f"You are a helpful assistant "
                 f"Bellow there is some context you should use to answer the questions "
-                f"The pieces of information are separated by:---\nCONTEXT->{context}."
+                f"The pieces of information are separated by:---\n{context}."
             ),
         )
     )
