@@ -19,8 +19,6 @@ RUN poetry build
 FROM base as final
 
 COPY --from=builder /app/.venv /opt/.venv
-COPY --from=builder /app/dist .
-RUN /opt/.venv/bin/pip install *.whl
 
 ENV PATH="/opt/.venv/bin:$PATH"
 
