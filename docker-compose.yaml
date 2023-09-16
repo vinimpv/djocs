@@ -3,6 +3,8 @@ services:
   app:
     build: .
     command: [./scripts/start.sh]
+    env_file:
+      - .env
 
     volumes:
       - .:/app
