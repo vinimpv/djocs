@@ -166,3 +166,5 @@ static/
 
 *.ipynb
 postgres-data/
+
+requirements.txt
