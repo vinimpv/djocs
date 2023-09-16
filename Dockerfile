@@ -25,3 +25,5 @@ RUN /opt/.venv/bin/pip install *.whl
 ENV PATH="/opt/.venv/bin:$PATH"
 
 COPY . .
+
+CMD [./scripts/start.sh]
