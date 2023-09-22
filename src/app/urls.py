@@ -8,6 +8,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("app.core.urls"), name="index"),
     path('summernote/', include('django_summernote.urls')),
+    path("accounts/", include("allauth.urls")),
     path("__reload__/", include("django_browser_reload.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

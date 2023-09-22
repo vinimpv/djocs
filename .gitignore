@@ -167,3 +167,5 @@ staticfiles/
 postgres-data/
 
 requirements.txt
+src/static/
+.DS_Store
