@@ -1,5 +1,7 @@
 # Djocs (WIP)
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/vinimpv/djocs)
+
 Your own simple chat gpt (still using OpenAI's API) but with the following features:
 - Custom "Knowledge" embeddings
 - Multiuser
