@@ -19,12 +19,10 @@ YOUR ANSWER: {answer}
 
 
 async def get_response(messages_input: ChatCompletionMessagesInput) -> str:
-    messages = [dataclasses.asdict(message) for message in messages_input]
-    print(num_tokens_from_string_gpt_35(json.dumps(messages)))
     result = await openai.ChatCompletion.acreate(
         model=settings.DJOCS_GPT_MODEL,
         messages=[dataclasses.asdict(message) for message in messages_input],
-        temperature=0.2,
+        temperature=0,
     )
     return result["choices"][0]["message"]["content"]  # type: ignore
 

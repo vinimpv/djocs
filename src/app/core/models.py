@@ -93,6 +93,7 @@ class MessageResponse(BaseModel):
 
 class Knowledge(BaseModel):
     content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     embedding = VectorField(dimensions=1536, null=True, blank=True, default=None)

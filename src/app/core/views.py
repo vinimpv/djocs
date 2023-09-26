@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 
 P = ParamSpec("P")
 
+
 def get_user(request: HttpRequest) -> User | None:
     return cast(User, request.user) if request.user.is_authenticated else None
 
@@ -66,7 +67,7 @@ async def get_chat(request: HttpRequest, chat_id: str, user) -> HttpResponse:
 
 
 @require_auth
-async def send_message(request: HttpRequest,user: User, chat_id: str) -> HttpResponse:
+async def send_message(request: HttpRequest, user: User, chat_id: str) -> HttpResponse:
     chat: Chat = await sync_to_async(get_object_or_404)(Chat, id=chat_id, active=True, author=user)
 
     if request.method == "GET":
@@ -76,10 +77,12 @@ async def send_message(request: HttpRequest,user: User, chat_id: str) -> HttpRes
         if not content:
             return render(request, "error.html", {"error": "Missing content"})
 
-        message = await messages_service.create_message(chat=chat, author=user, content=content)
         message_embedding = await embeddings_service.get_content_embedding(content)
+        message = await messages_service.create_message(
+            chat=chat, author=user, content=content, embedding=message_embedding
+        )
 
-        knowledges = await knowledges_service.get_relevant_knowledges_for_message_embedding(message_embedding)
+        knowledges = await knowledges_service.get_relevant_knowledges(message.embedding, str(user.pk))
 
         context = await get_context_from_knowledges(knowledges)
         # context + history cant be more than 1000 characters?

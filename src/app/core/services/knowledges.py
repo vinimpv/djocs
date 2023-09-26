@@ -8,12 +8,12 @@ async def get_knowledge_embedding(knowledge: Knowledge) -> list[float]:
     return await get_content_embedding(content)
 
 
-async def get_relevant_knowledges_for_message_embedding(
-    message_embedding: list[float]
+async def get_relevant_knowledges(
+    message_embedding: list[float], user_id: str
 ) -> list[Knowledge]:
     knowledges_qs = (
         Knowledge.objects.annotate(distance=L2Distance("embedding", message_embedding))
-        .filter(distance__lt=1)
+        .filter(distance__lt=1, author_id=user_id)
         .order_by("distance")
     )
     knowledges = []
