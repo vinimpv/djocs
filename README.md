@@ -1,16 +1,12 @@
-# Djocs (WIP)
+# Djocs
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/vinimpv/djocs)
-
-Your own simple chat gpt (still using OpenAI's API) but with the following features:
-- Custom "Knowledge" embeddings
-- Multiuser
-- Shareable templates
 
 Built with:
 
 - [OpenAI](https://openai.com/)
 - [Django](https://www.djangoproject.com/)
+- [pgvector](https://github.com/pgvector/pgvector)
 - [htmx](https://htmx.org/)
 - [Flowbite](https://flowbite.com/)
 - [Tailwind](https://tailwindcss.com/)
@@ -38,5 +34,3 @@ docker-compose exec app python manage.py createsuperuser
 Login to the admin page at http://localhost:8000/admin
 
 Go to the [chat history page](http://localhost:8000/)
-
-
