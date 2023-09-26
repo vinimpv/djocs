@@ -1,15 +1,15 @@
 # Djocs
-
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/vinimpv/djocs)
+
+A simple ChatGPT clone with knowledge embeddings.
 
 Built with:
 
 - [OpenAI](https://openai.com/)
 - [Django](https://www.djangoproject.com/)
-- [pgvector](https://github.com/pgvector/pgvector)
 - [htmx](https://htmx.org/)
+- [pgvector](https://github.com/pgvector/pgvector)
 - [Flowbite](https://flowbite.com/)
-- [Tailwind](https://tailwindcss.com/)
 
 And many other great open-source libraries, check the [pyproject.toml](pyproject.toml) file for more info.
 
