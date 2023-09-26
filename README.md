@@ -15,22 +15,34 @@ And many other great open-source libraries, check the [pyproject.toml](pyproject
 
 ## Running locally
 
-```
+```bash
 git clone git@github.com:vinimpv/djocs.git
 cd djocs
 docker-compose up
 ```
 
 Copy the .env.example file to .env and replace the OPENAI_API_KEY with the correct key
-```
+```bash
 cp .env.example .env
 ```
 
 Create the superuser to access the admin panel
-```
+```bash
 docker-compose exec app python manage.py createsuperuser
 ```
 
 Login to the admin page at http://localhost:8000/admin
 
 Go to the [chat history page](http://localhost:8000/)
+
+## Codespaces
+
+You can also run this project in a Github Codespace, just click the button on the top of this README.
+
+After the Codespace is created, follow the same steps as above to provide the API key, then:
+
+```bash
+docker-compose up
+```
+create the superuser and access the admin panel.
+
